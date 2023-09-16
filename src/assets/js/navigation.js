@@ -32,7 +32,7 @@ const startViewTransition = () => {
         document.startViewTransition(() => {
           // el scroll hacia arriba del todo
           document.body.innerHTML = data
-          //document.documentElement.scrollTop = 0
+          document.documentElement.scrollTop = 0
         })
       }
     })
