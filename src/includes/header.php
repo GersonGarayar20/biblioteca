@@ -8,11 +8,10 @@
   <link rel="stylesheet" href="../assets/css/styles.css">
   <script src="../assets/js/navigation.js"></script>
   <script src="../assets/js/menu.js"></script>
-  <script src="../assets/js/nav.js"></script>
 </head>
 
 <body>
 
   <?php include "../includes/menu.php" ?>
 
-  <main class="px-8 md:px-16 md:ml-60 transition-all">
+  <main class="px-8 md:px-16 md:ml-60 transition-all min-h-screen">

@@ -4,23 +4,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
   $username = $_POST["username"];
   $password = $_POST["password"];
+  $email = $_POST["email"];
 
-  loginUser($username, $password);
+  registerUser($username, $password, $email);
 }
 ?>
 <?php
-$title = "Iniciar Sesion";
+$title = "Registrarse";
 include "../includes/header.php";
 ?>
 
-<section class="pt-16">
-  <h1 class="text-2xl">Iniciar Sesion</h1>
+<section class="h-full pt-16">
+  <h1 class="text-2xl">Registrarse</h1>
   <form class="flex flex-col gap-4 py-4" action="" method="post">
     <input class="py-2 px-4 outline-none border" type="text" name="username" placeholder="nombre">
     <input class="py-2 px-4 outline-none border" type="password" name="password" placeholder="contraseña">
-    <button class="py-2 px-4 bg-orange-200">Iniciar Sesion</button>
+    <input class="py-2 px-4 outline-none border" type="email" name="email" placeholder="email">
+    <button class="py-2 px-4 bg-orange-200">Registrar</button>
   </form>
-  <p>¿No tienes una cuenta? <a class="text-orange-600" href="signup.php">Registrarse</a></p>
+  <p>¿Ya tienes una cuenta? <a class="text-orange-600" href="./login.php">Iniciar sesión</a></p>
 </section>
 
 <?php include "../includes/footer.php" ?>
