@@ -6,7 +6,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $password = $_POST["password"];
   $email = $_POST["email"];
 
-  registerUser($username, $password, $email);
+  $res = registerUser($username, $password, $email);
+
+  if ($res) {
+    session_start();
+    $_SESSION['usuario_id'] = $id_del_usuario;
+    $_SESSION['nombre_usuario'] = $nombre_de_usuario;
+    header("Location: ./index.php");
+  }
 }
 ?>
 <?php

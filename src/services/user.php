@@ -25,9 +25,9 @@ function registerUser($username, $password, $email)
   $stmt->bind_param("sss", $username, $hashedPassword, $email);
 
   if ($stmt->execute()) {
-    return "Registro exitoso.";
+    return true;
   } else {
-    return "Error al registrar el usuario.";
+    return false;
   }
 }
 
@@ -45,11 +45,11 @@ function loginUser($username, $password)
   if ($result->num_rows == 1) {
     $row = $result->fetch_assoc();
     if (password_verify($password, $row["password"])) {
-      return "Inicio de sesión exitoso. ¡Bienvenido, " . $row["username"] . "!";
+      return true;
     } else {
-      return "Contraseña incorrecta.";
+      return false;
     }
   } else {
-    return "Usuario no encontrado.";
+    return false;
   }
 }

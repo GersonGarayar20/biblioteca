@@ -5,7 +5,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $username = $_POST["username"];
   $password = $_POST["password"];
 
-  loginUser($username, $password);
+  $res = loginUser($username, $password);
+
+  if ($res) {
+    session_start();
+    $_SESSION['usuario_id'] = $id_del_usuario;
+    $_SESSION['nombre_usuario'] = $nombre_de_usuario;
+    header("Location: ./index.php");
+  }
 }
 ?>
 <?php
