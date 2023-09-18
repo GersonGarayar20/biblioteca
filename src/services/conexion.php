@@ -1,17 +1,13 @@
 <?php
-function conexion()
-{
-  $hostname = "localhost";
-  $username = "root";
-  $password = "";
-  $database = "threeds";
-  $port = "3306";
 
-  $mysqli = new mysqli($hostname, $username, $password, $database, $port);
+$hostname = "localhost";
+$username = "root";
+$password = "";
+$database = "biblioteca";
+$port = "3307";
 
-  if ($mysqli->connect_error) {
-    die("Conexión fallida: " . $mysqli->connect_error);
-  }
+$conn = new mysqli($hostname, $username, $password, $database, $port);
 
-  return $mysqli;
+if ($conn->connect_error) {
+  die("Conexión fallida: " . $conn->connect_error);
 }

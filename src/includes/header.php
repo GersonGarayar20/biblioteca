@@ -6,8 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title><?php echo $title ?></title>
   <link rel="stylesheet" href="../assets/css/styles.css">
-  <script src="../assets/js/navigation.js"></script>
-  <script src="../assets/js/menu.js"></script>
+  <!-- <script src="../assets/js/navigation.js"></script> -->
 </head>
 
 <body>

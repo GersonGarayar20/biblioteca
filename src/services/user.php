@@ -1,26 +1,23 @@
 <?php
-include "./conexion.php";
-
-
 
 function registerUser($username, $password, $email)
 {
-  $conn = conexion();
+  global $conn;
 
   // Verificar si el usuario ya existe en la base de datos
-  $sql = "SELECT id FROM usuarios WHERE username = ? OR email = ?";
+  $sql = "SELECT id FROM usuarios WHERE nombre = ? OR email = ?";
   $stmt = $conn->prepare($sql);
   $stmt->bind_param("ss", $username, $email);
   $stmt->execute();
   $result = $stmt->get_result();
 
   if ($result->num_rows > 0) {
-    return "El usuario o el correo electrónico ya están registrados.";
+    return false;
   }
 
   // Insertar el nuevo usuario en la base de datos
   $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-  $sql = "INSERT INTO usuarios (username, password, email) VALUES (?, ?, ?)";
+  $sql = "INSERT INTO usuarios (nombre, contraseña, email) VALUES (?, ?, ?)";
   $stmt = $conn->prepare($sql);
   $stmt->bind_param("sss", $username, $hashedPassword, $email);
 
@@ -33,7 +30,7 @@ function registerUser($username, $password, $email)
 
 function loginUser($username, $password)
 {
-  $conn = conexion();
+  global $conn;
 
   // Buscar el usuario en la base de datos
   $sql = "SELECT id, username, password FROM usuarios WHERE username = ?";

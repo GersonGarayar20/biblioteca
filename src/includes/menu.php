@@ -1,14 +1,44 @@
 <?php
 session_start();
+print_r($_SESSION);
 
-if (isset($_SESSION['usuario_id'])) {
+if (isset($_SESSION['username'])) {
   $sesion = true;
 } else {
   $sesion = false;
 }
 ?>
 
-<button class="btn-menu md:hidden w-16 h-16 fixed right-8 top-0 z-50 flex items-center justify-center">
+<script>
+  document.addEventListener("click", (e) => {
+    const menu = document.getElementById("menu");
+
+    if (e.target.matches("#btn-menu") || e.target.matches("#btn-menu > *")) {
+      if (menu.style.left === "0px") {
+        menu.style.left = "-100%";
+      } else {
+        menu.style.left = "0px";
+      }
+    }
+  });
+
+  window.addEventListener("resize", (e) => {
+    const menu = document.getElementById("menu");
+
+    const windowWidth =
+      window.innerWidth ||
+      document.documentElement.clientWidth ||
+      document.body.clientWidth;
+
+    if (windowWidth > 768) {
+      menu.style.left = "0px";
+    } else {
+      menu.style.left = "-100%";
+    }
+  });
+</script>
+
+<button id="btn-menu" class="md:hidden w-16 h-16 fixed right-8 top-0 z-50 flex items-center justify-center">
   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
     <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
   </svg>

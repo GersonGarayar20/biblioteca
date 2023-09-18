@@ -1,6 +1,10 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  include "../services/conexion.php";
   include "../services/user.php";
+
+  echo "registrar";
+  print_r($_POST);
 
   $username = $_POST["username"];
   $password = $_POST["password"];
@@ -10,8 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
   if ($res) {
     session_start();
-    $_SESSION['usuario_id'] = $id_del_usuario;
-    $_SESSION['nombre_usuario'] = $nombre_de_usuario;
+    $_SESSION["username"] = $username;
     header("Location: ./index.php");
   }
 }
@@ -31,5 +34,6 @@ include "../includes/header.php";
   </form>
   <p>¿Ya tienes una cuenta? <a class="text-orange-600" href="./login.php">Iniciar sesión</a></p>
 </section>
+
 
 <?php include "../includes/footer.php" ?>
