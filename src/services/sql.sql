@@ -1,4 +1,4 @@
-CREATE TABLE libros (
+CREATE TABLE books (
     id INT AUTO_INCREMENT PRIMARY KEY,
     titulo VARCHAR(255) NOT NULL,
     autor VARCHAR(255),
@@ -13,17 +13,17 @@ CREATE TABLE libros (
     disponibilidad BOOLEAN DEFAULT true
 );
 
-CREATE TABLE usuarios (
+CREATE TABLE users (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    nombre VARCHAR(100) NOT NULL,
+    name VARCHAR(100) NOT NULL,
     email VARCHAR(255) UNIQUE NOT NULL,
-    contraseña VARCHAR(255) NOT NULL
+    password VARCHAR(255) NOT NULL
 );
 
-CREATE TABLE favoritos (
+CREATE TABLE favorites (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    usuario_id INT,
-    libro_id INT,
-    FOREIGN KEY (usuario_id) REFERENCES usuarios(id),
-    FOREIGN KEY (libro_id) REFERENCES libros(id)
+    user_id INT,
+    book_id INT,
+    FOREIGN KEY (user_id) REFERENCES users(id),
+    FOREIGN KEY (book_id) REFERENCES books(id)
 );

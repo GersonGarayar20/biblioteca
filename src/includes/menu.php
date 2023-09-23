@@ -1,8 +1,8 @@
 <?php
 session_start();
-print_r($_SESSION);
+// print_r($_SESSION);
 
-if (isset($_SESSION['username'])) {
+if (isset($_SESSION['name'])) {
   $sesion = true;
 } else {
   $sesion = false;

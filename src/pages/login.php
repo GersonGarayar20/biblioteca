@@ -1,4 +1,6 @@
 <?php
+$error = false;
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   include "../services/conexion.php";
   include "../services/user.php";
@@ -6,12 +8,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $username = $_POST["username"];
   $password = $_POST["password"];
 
-  $res = loginUser($username, $password);
+  $result = loginUser($username, $password);
 
-  if ($res) {
+  if ($result) {
     session_start();
-    $_SESSION["username"] = $username;
+    $_SESSION["id"] = $result["id"];
+    $_SESSION["name"] = $result["name"];
     header("Location: ./index.php");
+  } else {
+    $error = true;
   }
 }
 ?>
@@ -25,6 +30,9 @@ include "../includes/header.php";
   <form class="flex flex-col gap-4 py-4" action="" method="post">
     <input class="py-2 px-4 outline-none border" type="text" name="username" placeholder="nombre">
     <input class="py-2 px-4 outline-none border" type="password" name="password" placeholder="contraseña">
+    <?php if ($error) { ?>
+      <p class="text-white bg-red-400 py-2 px-4 rounded">Nombre de usuario o contraseña incorrectos</p>
+    <?php } ?>
     <button class="py-2 px-4 bg-orange-200">Iniciar Sesion</button>
   </form>
   <p>¿No tienes una cuenta? <a class="text-orange-600" href="signup.php">Registrarse</a></p>
