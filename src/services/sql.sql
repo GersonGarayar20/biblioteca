@@ -1,16 +1,11 @@
 CREATE TABLE books (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    titulo VARCHAR(255) NOT NULL,
-    autor VARCHAR(255),
-    isbn VARCHAR(20),
+    title VARCHAR(255) NOT NULL,
+    author VARCHAR(255),
     editorial VARCHAR(100),
-    anio_publicacion INT,
-    genero VARCHAR(50),
-    sinopsis TEXT,
-    portada_url VARCHAR(255),
-    idioma VARCHAR(50),
-    numero_paginas INT,
-    disponibilidad BOOLEAN DEFAULT true
+    publication_year INT,
+    cover_url VARCHAR(255),
+    pdf_url VARCHAR(255)
 );
 
 CREATE TABLE users (
@@ -27,3 +22,12 @@ CREATE TABLE favorites (
     FOREIGN KEY (user_id) REFERENCES users(id),
     FOREIGN KEY (book_id) REFERENCES books(id)
 );
+
+INSERT INTO books(title, author, editorial, publication_year, cover_url, pdf_url) VALUES 
+('La asamblea de las mujeres','Arístófanes','Feedbooks',null,'1000000000785.jpg', '1000000000785.pdf'),
+('Fabulas de Esopo IX','Esopo','Feedbooks',null,'067_Esopo_-_Las_fabulas._Vol._IX.jpg','067_Esopo_-_Las_fabulas._Vol._IX.pdf'),
+('Poética','Arístófanes','Feedbooks',1798,'1000000000662.jpg', '1000000000662.pdf'),
+('Las avispas','Arístófanes','Feedbooks',null,'1000000000787.jpg', '1000000000787.pdf'),
+('Las nubes','Arístófanes','Feedbooks',null,'1000000000788.jpg', '1000000000788.pdf'),
+('Robur el conquistador','Verne, Jules','Feedbooks',null,'51pC_ZuIeXL._SX339_BO1_204_203_200_.jpg', '159_robur_el_conquistador.pdf'),
+('Veinte mil leguas de viaje submarino','Verne, Jules','Feedbooks',null,'165_Julio__Verne_-_Veinte_mil_leguas_de_viaje_submarino.jpg', '165_Julio__Verne_-_Veinte_mil_leguas_de_viaje_submarino.pdf'),
