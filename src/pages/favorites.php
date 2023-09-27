@@ -14,9 +14,11 @@ include "../includes/header.php";
 
 <section class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
   <?php
-  $user_id = $_SESSION['id'];
 
-  if ($user_id) {
+  if ($sesion) {
+    $user_id = $_SESSION['id'];
+
+
     include "../services/conexion.php";
     include "../services/favorites.php";
 
@@ -29,6 +31,8 @@ include "../includes/header.php";
       include "../includes/book.php";
     }
   }
+
+
   ?>
 </section>
 
