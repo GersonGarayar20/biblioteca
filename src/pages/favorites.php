@@ -18,7 +18,6 @@ include "../includes/header.php";
   if ($sesion) {
     $user_id = $_SESSION['id'];
 
-
     include "../services/conexion.php";
     include "../services/favorites.php";
 
@@ -31,7 +30,6 @@ include "../includes/header.php";
       include "../includes/book.php";
     }
   }
-
 
   ?>
 </section>
