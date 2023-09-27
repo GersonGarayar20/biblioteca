@@ -12,14 +12,24 @@ include "../includes/header.php";
   </a>
 </nav>
 
-<section class="">
-  <h2 class="text-2xl py-4">Ciencia</h2>
-  <div class="grid grid-cols-4">
-    <?php
-    $id = 1;
-    include "../includes/book.php"
-    ?>
-  </div>
+<section class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+  <?php
+  $user_id = $_SESSION['id'];
+
+  if ($user_id) {
+    include "../services/conexion.php";
+    include "../services/favorites.php";
+
+    $books = obtenerLibrosFavoritos($user_id);
+
+    foreach ($books as $book) {
+      $book_id = $book["id"];
+      $book_title = $book["title"];
+      $book_cover = $book["cover_url"];
+      include "../includes/book.php";
+    }
+  }
+  ?>
 </section>
 
 <?php include "../includes/footer.php" ?>
